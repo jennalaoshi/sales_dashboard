@@ -2,13 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+# Test changes made to the code
+
 st.set_page_config(
     page_title="Sales Dashboard",
     layout="wide"
 )
 
 st.title("Sales Dashboard")
-st.write("Use this dashboard to analyze sales by region, product, and date.")
 
 @st.cache_data
 def load_data():
