@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from st_supabase_connection import SupabaseConnection
+
+# Initialize the secure, cached connection
+conn = st.connection("supabase_connection", type=SupabaseConnection)
+
+# Test changes made to the code
 
 # Test changes made to the code
 
@@ -9,11 +15,13 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Sales Dashboard")
+st.title("Sales Dashboard (New)")
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("sales_data.csv")
+
+    df = conn.query("*", table="sales_data").execute()
+    # df = pd.read_csv("sales_data.csv")
     df["date"] = pd.to_datetime(df["date"])
     return df
 
